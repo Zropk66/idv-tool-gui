@@ -370,15 +370,15 @@ class MainWindow(QMainWindow):
             try:
                 self.w.logger.info("正在检测游戏是否登录")
                 while True:
-                    if checkGameIsLogin() is True:
-                        if is_process_running(self.w.idvLoginName) is False:
-                            self.w.logger.info("idv-login 运行异常")
-                            if is_process_running("dwr.exe") is True:
-                                subprocess.run(f"taskkill /im dwrg.exe /f", shell=True)
-                            self.w.startButton.show()
-                            return
-                        break
                     time.sleep(1)
+                    if is_process_running(self.w.idvLoginName) is False:
+                        self.w.logger.info("idv-login 运行异常")
+                        if is_process_running("dwr.exe") is True:
+                            subprocess.run(f"taskkill /im dwrg.exe /f", shell=True)
+                        self.w.startButton.show()
+                        return
+                    elif checkGameIsLogin() is True:
+                        break
 
                 if self.w.autoExitIdvLoginEnable.isChecked() is True:
                     killIdvLoginResult = subprocess.run(f"taskkill /im {self.w.idvLoginName} /f",
