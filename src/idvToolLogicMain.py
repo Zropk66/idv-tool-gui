@@ -45,7 +45,7 @@ class idvToolLogic(QThread):
             except subprocess.TimeoutExpired:
                 logger.info("idv-login 启动失败启动失败")
                 subprocess.run(f"taskkill /im {self.w.idvLoginName} /f", shell=True)
-                return 0
+                return
 
             while not is_port_in_use(self.w.idvLoginName, 443):
                 time.sleep(1)
@@ -61,7 +61,7 @@ class idvToolLogic(QThread):
                                shell=True, cwd=self.w.workingDirectory, timeout=3)
             except subprocess.TimeoutExpired:
                 logger.info("第五人格 启动失败启动失败")
-                return 0
+                return
 
             self.w.checkIsGameLoginThread.start()
         except Exception as e:
