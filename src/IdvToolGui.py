@@ -20,7 +20,7 @@ from PySide6.QtWidgets import QApplication, QMainWindow, QTextBrowser, QMenuBar,
 from Module import getIdvLogin, programDir, loadConfig, is_process_running, getRunningTime, \
     savePlayRecord, loadPlayRecord, checkGameIsLogin
 
-__version__ = "1.2.0"
+__version__ = "1.2.1"
 
 from idvToolLogicMain import idvToolLogic
 

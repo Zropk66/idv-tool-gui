@@ -125,7 +125,10 @@ def checkGameIsLogin():
         log_list = file.readlines()
     log = log_list[-1]
 
-    login_successful = {"('verify_status', '1')", "渠道服登录信息已更新"}
+    login_successful = {"('verify_status', '1')",
+                        "渠道服登录信息已更新",
+                        "请求 https://service.mkey.163.com/mpay/api/data/upload 200 OK"
+                        }
 
     for login_message in login_successful:
         if login_message in log:
